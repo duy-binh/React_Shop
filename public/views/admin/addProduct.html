@@ -1,0 +1,36 @@
+<%-include('header.ejs') %>
+<hr>
+<style>
+  .mt-5{
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>
+<body>
+    <center><h1>THÊM SẢN PHẨM</h1></center>
+    <div class="container mt-5">
+        <form action="/products/create" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price:</label>
+            <input type="number" id="price" name="price" min="0" step="0.01" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Trạng Thái</label>
+            <input type="text" id="status" name="status" class="form-control" placeholder="1: HOT, 2: NEW" required>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" class="form-control" required>
+          </div>
+           <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">ADD PRODUCT</button>
+        </form>
+      </div>
+</body>

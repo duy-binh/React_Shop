@@ -1,0 +1,107 @@
+<%- include('header.ejs') %>
+<hr>
+<body>
+    <a href="/products" class="btn btn-primary float-end me-3">THÊM SẢN PHẨM</a>
+  <!-- <center><h1>DANH SÁCH SẢN PHẨM</h1></center> -->
+  <table class="table">
+      <thead>
+          <tr>
+              <th colspan="1">TÊN</th>
+              <th colspan="1">GIÁ</th>
+              <th colspan="1">IMG</th>
+              <th colspan="1">THÔNG TIN</th>
+              <th colspan="4">THAO TÁC</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% products.forEach(item => { %>
+          <tr>
+              <td><%= item.name %></td>
+              <td><%= item.price %> VND</td>
+              <td><img src="/uploads/<%= item.img %>" alt="<%= item.id %>" width="100px" height="120px"></td>
+              <td><%= item.description %></td>
+              <td colspan="4">
+                  <a href="/products/delete/<%= item.id %>">
+                      <button type="submit" class="btn btn-outline-success">XÓA</button>
+                  </a>
+                  <br>
+                  <button class="btn btn-outline-danger edit-btn"
+                          data-id="<%= item.id %>"
+                          data-name="<%= item.name %>"
+                          data-price="<%= item.price %>"
+                          data-img="/uploads/<%= item.img %>"
+                          data-description="<%= item.description %>"
+                          data-status="<%= item.status %>">SỬA</button>
+              </td>
+          </tr>
+          <% }); %>
+      </tbody>
+  </table>
+
+  <div id="editForm" class="mt-4 edit-form">
+      <div class="card-body">
+          <form id="editProductForm"  action="/products/edit/<%= products.id %>" method="POST" enctype="multipart/form-data">
+              <button type="button" class="close-icon" onclick="closeForm()">
+                  <i class="fas fa-times"></i>
+              </button>
+              <div class="mb-3">
+                  <label for="name" class="form-label">Tên Sản Phẩm:</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                  <label for="price" class="form-label">Giá:</label>
+                  <input type="text" class="form-control" id="price" name="price" required>
+              </div>
+              <div class="mb-3">
+                <label for="status" class="form-label">Trạng Thái:</label>
+                <input type="text" class="form-control" id="status" name="status" required>
+            </div>
+              <div class="mb-3">
+                  <label for="image" class="form-label">Hình Ảnh:</label>
+                  <input type="file" class="form-control" id="image" name="image" required>
+              </div>
+              <div class="mb-3">
+                  <label for="description" class="form-label">Mô Tả:</label>
+                  <input type="text" class="form-control" id="description" name="description" required>
+              </div>
+              <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Cập Nhật</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const editButtons = document.querySelectorAll('.edit-btn');
+      const editForm = document.querySelector('.edit-form');
+      const editProductForm = document.getElementById('editProductForm');
+
+      editButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              // Lấy ID và các thuộc tính từ dữ liệu
+              const ProductID = this.getAttribute('data-id');
+              const productName = this.getAttribute('data-name');
+              const productPrice = this.getAttribute('data-price');
+              const productImg = this.getAttribute('data-img');
+              const productDescription = this.getAttribute('data-description');
+              const productStatus = this.getAttribute('data-status');
+              // Hiển thị form chỉnh sửa
+              editForm.style.display = 'block';
+              // Đặt giá trị của các trường input trong form
+              document.getElementById('name').value = productName;
+              document.getElementById('price').value = productPrice;
+              document.getElementById('image').src = productImg;
+              document.getElementById('description').value = productDescription;
+              document.getElementById('status').value = productStatus;
+              // Đặt action của form chỉnh sửa để truyền ID của sản phẩm
+              editProductForm.action = `/products/edit/${ProductID}`;
+          });
+      });
+  });
+
+  function closeForm() {
+      document.getElementById('editForm').style.display = 'none';
+  }
+</script>

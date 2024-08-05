@@ -1,0 +1,18 @@
+<style>
+    /* Áp dụng CSS để căn giữa biểu mẫu */
+    .centered-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+  <%-include('header.ejs') %>
+  <hr>
+      <center><h1>THÊM DANH MỤC</h1></center>
+      <form action="/catalog/create" method="POST" class="centered-form">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Catalog</button>
+      </form>
+  

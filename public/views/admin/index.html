@@ -1,0 +1,119 @@
+<!-- <style>
+    /* Áp dụng CSS để căn giữa biểu mẫu */
+    .table {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .edit-form {
+        display: none;
+    }
+    .edit-form {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #c7bfbf;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+    .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555; /* Màu của biểu tượng */
+    font-size: 24px; /* Kích thước của biểu tượng */
+}
+
+</style> -->
+</style>
+<%-include('header.ejs') %>
+<hr>
+<body>
+  <a href="/users" class="btn btn-primary float-end me-3">THÊM USER</a>
+    <!-- <center><h1>DANH SÁCH USER </h1></center> -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Thao Tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td> 
+            <a href="/users/deleteUser/<%= user.id %>">  
+              <button type="button" class="btn btn-outline-success">XÓA</button>
+            </a> 
+              <button type="button" class="btn btn-outline-danger edit-btn" data-id="<%= user.id %>" data-name="<%= user.name %>" data-email="<%= user.email %>">SỬA</button></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+   <!-- Form chỉnh sửa danh mục -->
+   <div id="editForm" class=" mt-4 edit-form">
+    <div class="card-body">
+        <form id="editUserForm" action="/users/edit/<%= users.id %>" method="POST">
+            <button type="button" class="close-icon" onclick="closeForm()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên User:</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= users.name %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" class="form-control" id="email" name="email" value="<%= users.email %>" required>
+          </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Cập Nhật</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const editButtons = document.querySelectorAll('.edit-btn');
+    const editForm = document.querySelector('.edit-form');
+    const editUserForm = document.getElementById('editUserForm');
+
+    editButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Lấy ID và tên từ thuộc tính data
+        const UserId = this.getAttribute('data-id');
+        const UserName = this.getAttribute('data-name');
+        const UserEmail = this.getAttribute('data-email');
+        // Hiển thị form chỉnh sửa
+        editForm.style.display = 'block';
+        // Đặt giá trị của tên danh mục vào trường input trong form
+        document.getElementById('name').value = UserName;
+        document.getElementById('email').value = UserEmail;
+        // Đặt action của form chỉnh sửa để truyền id của danh mục đó
+        editUserForm.action = `/users/edit/${UserId}`;
+        });
+      });
+    });
+
+    function closeForm() {
+    document.getElementById('editForm').style.display = 'none';
+    }
+
+</script>
+
+

@@ -1,0 +1,23 @@
+<style>
+  /* Áp dụng CSS để căn giữa biểu mẫu */
+  .centered-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>
+<%-include('header.ejs') %>
+<hr>
+    <center><h1><%=titlepage%></h1></center>
+    <form action="/users/create" method="POST" class="centered-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+      </div>
+    
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
