@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the file BE_React
+In the file BE_React, you can run:
 ### `node .cjs`
 
 In the project directory, you can run:
