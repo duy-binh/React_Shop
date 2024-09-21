@@ -67,7 +67,7 @@ const Header = (_props) => {
                                 </ul>
 
                             </li>
-                            <li><Link to="/" className="nav-link px-2 text-muted">GIỚI THIỆU</Link></li>
+                            <li><Link to="/about" className="nav-link px-2 text-muted">GIỚI THIỆU</Link></li>
                         </ul>
 
                         <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

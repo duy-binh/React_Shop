@@ -26,7 +26,7 @@ const ProductDetail = () => {
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-6 d-flex justify-content-center">
-            <img src={`../img/products/${product.img}`} alt={product.name} className="w-400" />
+            <img src={`../img/products/${product.img}`} alt={product.name} className="w-250" />
           </div>
           <div className="col-lg-6">
             <h2 className="fw-bold">{product.name}</h2>
