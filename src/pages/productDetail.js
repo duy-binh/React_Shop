@@ -30,7 +30,7 @@ const ProductDetail = () => {
           </div>
           <div className="col-lg-6">
             <h2 className="fw-bold">{product.name}</h2>
-            <p className="text-muted">{product.category}</p>
+            <p className="text-muted">Danh Mục Sản Phẩm <b>{product.category}</b></p>
             <h3 className="my-4">{product.price} Đ</h3>
 
             <div className="d-flex gap-3 mb-4">
