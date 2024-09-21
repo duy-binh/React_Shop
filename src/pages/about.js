@@ -3,12 +3,13 @@ import React from 'react';
 const About = () => {
   return (
     <div>
+    <br></br>
       {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <h2>Chào mừng đến với thế giới truyện</h2>
           <p>Khám phá những câu chuyện hấp dẫn và thú vị nhất!</p>
-          <a href="#genres" className="btn btn-light">Xem Ngay</a>
+          <a href="/products" className="btn btn-light">Xem Ngay</a>
         </div>
       </section>
 
@@ -27,7 +28,7 @@ const About = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="card mb-4">
-                <img src="https://via.placeholder.com/300" className="card-img-top" alt="Lãng Mạn" />
+                <img src="https://product.hstatic.net/200000343865/product/nhung-cau-chuyen-lang-man-2_8c4fbdc672f84659828d3d426468be91.jpg" className="card-img-top" alt="Lãng Mạn" />
                 <div className="card-body">
                   <h5 className="card-title">Lãng Mạn</h5>
                   <p className="card-text">Khám phá những câu chuyện tình yêu ngọt ngào.</p>
@@ -36,16 +37,16 @@ const About = () => {
             </div>
             <div className="col-md-4">
               <div className="card mb-4">
-                <img src="https://via.placeholder.com/300" className="card-img-top" alt="Hành Động" />
+                <img src="https://bizweb.dktcdn.net/100/370/339/products/23.jpg?v=1579082382580" className="card-img-top" alt="Cổ Tích" />
                 <div className="card-body">
-                  <h5 className="card-title">Hành Động</h5>
-                  <p className="card-text">Những cuộc phiêu lưu đầy mạo hiểm đang chờ đón bạn.</p>
+                  <h5 className="card-title">Cổ Tích</h5>
+                  <p className="card-text">Những cuộc phiêu lưu đầy ý nghĩa.</p>
                 </div>
               </div>
             </div>
             <div className="col-md-4">
               <div className="card mb-4">
-                <img src="https://via.placeholder.com/300" className="card-img-top" alt="Kinh Dị" />
+                <img src="https://upload.wikimedia.org/wikipedia/vi/b/b7/Doraemon1.jpg" className="card-img-top" alt="Kinh Dị" />
                 <div className="card-body">
                   <h5 className="card-title">Kinh Dị</h5>
                   <p className="card-text">Những câu chuyện khiến bạn phải rùng mình.</p>
