@@ -9,7 +9,6 @@ const validate = formValues => {
     }
     return errors;
 };
-
 // Component props
 // handleSubmit: xử lý form, cung cấp bởi Redux
 // pristine: Boolean xác định trạng thái form (chưa thay đổi)

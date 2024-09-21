@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const ResgiterForm = ({ onResgiter }) => {
     const [formData, setFormData] = useState([]);
     console.log(formData);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         console.log(e.target);

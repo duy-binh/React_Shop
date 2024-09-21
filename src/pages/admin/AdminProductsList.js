@@ -16,7 +16,6 @@ const AdminProductsList = () => {
                 console.error('Lỗi khi lấy danh sách sản phẩm: ', error);
             }
         };
-
         fetchProducts();
     }, []);
     // Hàm thêm sp mới

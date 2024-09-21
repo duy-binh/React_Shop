@@ -15,7 +15,6 @@ const AdminCategoryList = () => {
                 console.error('Lỗi khi lấy danh sách Danh Mục: ', error);
             }
         };
-
         fetchCategorys();
     }, [editingCategory]);
     // Hàm thêm Danh Mục mới
