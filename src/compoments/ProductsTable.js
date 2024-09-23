@@ -1,6 +1,12 @@
 import React from 'react'
 
 const ProductsTable = ({ products , onEdit, onDeLete}) => {
+    const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND'
+        }).format(amount);
+      };
     return (
         <React.Fragment>
             <table className="table align-middle p-5 bg-white">
@@ -17,7 +23,7 @@ const ProductsTable = ({ products , onEdit, onDeLete}) => {
                     {products.map(item => (
                         <tr key={item.id} className="align-items-center">
                             <td>{item.name}</td>
-                            <td>{item.price}</td>
+                            <td>{formatCurrency(item.price)}</td>
                             <td>
                                 <img
                                     src={`../img/products/${item.img}`}

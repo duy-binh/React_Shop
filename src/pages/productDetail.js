@@ -5,6 +5,12 @@ import { useParams } from 'react-router-dom';
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(amount);
+  };
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -31,7 +37,7 @@ const ProductDetail = () => {
           <div className="col-lg-6">
             <h2 className="fw-bold">{product.name}</h2>
             <p className="text-muted">Danh Mục Sản Phẩm <b>{product.category}</b></p>
-            <h3 className="my-4">{product.price} Đ</h3>
+            <h3 className="my-4">{formatCurrency(product.price)}</h3>
 
             <div className="d-flex gap-3 mb-4">
               <input type="number" className="form-control" defaultValue="1" min="1" max="10" style={{ maxWidth: '80px' }} />

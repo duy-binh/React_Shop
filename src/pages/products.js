@@ -8,6 +8,12 @@ const Shop = () => {
     const getQueryParam = (param) => {
         return searchParams.get(param);
     };
+    const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND'
+        }).format(amount);
+      };
     const category = getQueryParam("category");
     console.log(category);
     const keyword = getQueryParam("keyword");
@@ -50,7 +56,7 @@ const Shop = () => {
                                     <Link to={`/products/${item.id}`}><img src={`../img/products/${item.img}`} alt={item.name} className="w-100" /></Link>
                                 </div>
                                 <h2 className="text">{item.name}</h2>
-                                <span className="price">{item.price} Đ</span><br />
+                                <span className="price">{formatCurrency(item.price)}</span><br />
                                 <button className="btn btn-outline-danger"  onClick={( () => addCartItem(item) )}>THÊM VÀO GIỎ</button>
                             </div>
                         ))}

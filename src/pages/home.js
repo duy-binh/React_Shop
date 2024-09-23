@@ -4,7 +4,12 @@ import { getProducts } from '../services/ProductsServices';
 import { useShoppingContext } from '../context/shoppingContext';
 const Home = (_props) => {
     const [products, setProducts] = useState([]);
-
+    const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(amount);
+    };
     const {addCartItem} = useShoppingContext();
     useEffect(() => {
         const fetchProducts = async () => {
@@ -40,7 +45,7 @@ const Home = (_props) => {
                                     <Link to={`/products/${item.id}`}><img src={`../img/products/${item.img}`} alt={item.name} className="w-100" /></Link>
                                 </div>
                                 <h2 className="text">{item.name}</h2>
-                                <span className="price">{item.price} Đ</span><br />
+                                <span className="price">{formatCurrency(item.price)}</span><br />
                                 <button className="btn btn-outline-danger" onClick={( () => addCartItem(item) )}>THÊM VÀO GIỎ</button>
                             </div>
                         ))}

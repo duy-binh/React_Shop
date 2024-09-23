@@ -4,7 +4,12 @@ import { useShoppingContext } from '../context/shoppingContext';
 
 const Cart = () => {
   const { CartItems, totalPrice, upQuantity, downQuantity, removeCartItem, clearCart } = useShoppingContext();
-
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(amount);
+  };
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: '#f8f9fa' }}>
       <div className="container py-5 h-100">
@@ -32,7 +37,7 @@ const Cart = () => {
                             </div>
                             <div className="col-md-3 col-lg-3 col-xl-3">
                               <h6 className="text-muted">{item.name}</h6>
-                              <h6 className="mb-0">{item.price} Đ</h6>
+                              <h6 className="mb-0">{formatCurrency(item.price)}</h6>
                             </div>
                             <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                               <button className="btn btn-danger" onClick={() => downQuantity(item.id)}>
@@ -53,7 +58,7 @@ const Cart = () => {
 
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 className="mb-0">{item.quantity * item.price} Đ</h6>
+                              <h6 className="mb-0">{formatCurrency(item.quantity * item.price)}</h6>
                             </div>
                             <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                               <button className="btn btn-danger" onClick={() => removeCartItem(item.id)}>Xóa<i className="fas fa-times"></i></button>
@@ -76,13 +81,13 @@ const Cart = () => {
                       <hr className="my-4" />
                       <div className="d-flex justify-content-between mb-4">
                         <h5 className="text-uppercase">Tổng</h5>
-                        <h5>{totalPrice} Đ</h5>
+                        <h5>{formatCurrency(totalPrice)}</h5>
                       </div>
                       <hr className="my-4" />
 
                       <div className="d-flex justify-content-between mb-5">
                         <h5 className="text-uppercase">Thành Tiền</h5>
-                        <h5>{totalPrice} Đ</h5>
+                        <h5>{formatCurrency(totalPrice)}</h5>
                       </div>
                       <button type="button" className="btn btn-dark btn-block btn-lg" onClick={() => clearCart()}>Thanh Toán</button>
                     </div>
