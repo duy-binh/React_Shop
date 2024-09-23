@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getProduct } from '../services/ProductsServices';
 import { useParams } from 'react-router-dom';
-
+import { useShoppingContext } from '../context/shoppingContext';
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const {addCartItem} = useShoppingContext();
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
@@ -41,7 +42,7 @@ const ProductDetail = () => {
 
             <div className="d-flex gap-3 mb-4">
               <input type="number" className="form-control" defaultValue="1" min="1" max="10" style={{ maxWidth: '80px' }} />
-              <button className="btn btn-outline-danger" type="button">THÊM VÀO GIỎ HÀNG</button>
+              <button className="btn btn-outline-danger" type="button" onClick={( () => addCartItem(product) )}>THÊM VÀO GIỎ HÀNG</button>
             </div>
             <h3 className="fw-bold">GIỚI THIỆU SẢN PHẨM</h3>
             <p className="text-muted">
